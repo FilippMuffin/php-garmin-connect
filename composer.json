@@ -1,6 +1,6 @@
 {
-  "name": "dawguk/php-garmin-connect",
-  "description": "A PHP adapter for interrogating the Garmin Connect \"API\"",
+  "name": "yksoft/php-garmin-connect",
+  "description": "A PHP adapter for interrogating the Garmin Connect \"API\" forked from 10REM/php-garmin-connect",
   "require": {
     "php": ">=5.3.0",
     "ext-curl": "*",

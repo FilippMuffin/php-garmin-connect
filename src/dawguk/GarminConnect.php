@@ -588,4 +588,33 @@ class GarminConnect
         return $objResponse;
     }
 
+    /**
+    * Retrieves sleep data
+    *
+    * @throws GarminConnect\exceptions\UnexpectedResponseCodeException
+    * @throws Exception
+    * @return mixed
+    */
+    public function getStressData(string $date = null)
+    {
+        $c = new \DateTime();
+        $a = $c->format('Y-m-d');
+
+        $arrParams = Array();
+
+        $url = 'https://connect.garmin.com/modern/proxy/wellness-service/wellness/dailyStress/' . $date ?? $a;
+
+        $strResponse = $this->objConnector->get(
+            $url,
+            $arrParams,
+            true
+        );
+
+        if ($this->objConnector->getLastResponseCode() != 200) {
+            throw new UnexpectedResponseCodeException($this->objConnector->getLastResponseCode());
+        }
+        $objResponse = json_decode($strResponse, true);
+        return $objResponse;
+    }
+
 }
